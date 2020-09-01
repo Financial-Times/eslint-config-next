@@ -1,5 +1,5 @@
 # eslint-config-next
-ESLint configuration for next projects
+ESLint configuration for Next projects
 
 ## Usage
 
