@@ -19,5 +19,6 @@
   "peerDependencies": {
     "eslint": ">=5.0.0",
     "eslint-plugin-no-only-tests": ">=2.0.0"
-  }
+  },
+  "private": false
 }
