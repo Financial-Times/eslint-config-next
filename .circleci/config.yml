@@ -1,5 +1,5 @@
 # generator: n-circle2-cli
-# template: app
+# template: component
 
 references:
 
@@ -71,14 +71,11 @@ jobs:
           name: Install project dependencies
           command: make install
       - run:
-          name: shared-helper / npm-update
-          command: .circleci/shared-helpers/helper-npm-update
-      - run:
           name: shared-helper / npm-install-peer-deps
           command: .circleci/shared-helpers/helper-npm-install-peer-deps
       - run:
-          name: Run the project build-production task
-          command: make build-production
+          name: shared-helper / npm-update
+          command: .circleci/shared-helpers/helper-npm-update
       - run:
           name: shared-helper / generate-build-state-artifacts
           command: .circleci/shared-helpers/helper-generate-build-state-artifacts
@@ -108,63 +105,44 @@ jobs:
           path: test-results
           destination: test-results
 
-  provision:
+  publish:
     <<: *container_config_node8
     steps:
       - *attach_workspace
       - run:
-          name: shared-helper / setup-heroku-cli
-          command: .circleci/shared-helpers/helper-setup-heroku-cli
-          # TODO: Move this out into next circleci app preset env variables in Vault
-          environment:
-            HEROKU_LOGIN: next.developers@ft.com
+          name: shared-helper / npm-store-auth-token
+          command: .circleci/shared-helpers/helper-npm-store-auth-token
+      - run: npx snyk monitor --org=customer-products --project-name=Financial-Times/n-fetch
       - run:
-          name: Create and test Heroku review app
-          command: make test-review-app
-
-  deploy:
-    <<: *container_config_node8
-    steps:
-      - *attach_workspace
-      - run:
-          name: shared-helper / helper-setup-heroku-cli
-          command: .circleci/shared-helpers/helper-setup-heroku-cli
-          # TODO: Move this out into next circleci app preset env variables in Vault
-          environment:
-            HEROKU_LOGIN: next.developers@ft.com
-      - run:
-          name: shared-helper / helper-install-puppeteer-deps
-          command: bash .circleci/shared-helpers/helper-install-puppeteer-deps
-      - run: node_modules/.bin/snyk monitor --org=customer-products --project-name="$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-      - run:
-          name: Deploy to production
-          command: make deploy
+          name: shared-helper / npm-version-and-publish-public
+          command: .circleci/shared-helpers/helper-npm-version-and-publish-public
 
 workflows:
 
   version: 2
 
-  build-test-provision:
+  build-test:
     jobs:
       - build:
           filters:
-            <<: *filters_ignore_master
+            <<: *filters_ignore_tags
       - test:
-          requires:
-            - build
-      - provision:
           requires:
             - build
 
-  build-test-deploy:
+  build-test-publish:
     jobs:
       - build:
           filters:
-            <<: *filters_only_master
+            <<: *filters_version_tag
       - test:
+          filters:
+            <<: *filters_version_tag
           requires:
             - build
-      - deploy:
+      - publish:
+          filters:
+            <<: *filters_version_tag
           requires:
             - test
 
@@ -178,10 +156,6 @@ workflows:
       - build:
           context: next-nightly-build
       - test:
-          requires:
-            - build
-          context: next-nightly-build
-      - provision:
           requires:
             - build
           context: next-nightly-build

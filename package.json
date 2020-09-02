@@ -22,7 +22,15 @@
   },
   "private": false,
   "devDependencies": {
+    "@financial-times/n-gage": "^6.0.1",
     "eslint": "^7.8.1",
     "eslint-plugin-no-only-tests": "^2.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "secret-squirrel",
+      "commit-msg": "secret-squirrel-commitmsg",
+      "pre-push": "make verify -j3"
+    }
   }
 }
