@@ -3,11 +3,11 @@ ESLint configuration for Next projects
 
 ## Usage
 
-Reference the shared configuration in your repository's own `.eslintrc.json` like so:
+Reference the shared configuration in your repository's own `.eslintrc.js` like so:
 
 ```json
 {
-    "extends": "@scope/eslint-config-next"
+    "extends": "@financial-times/eslint-config-next"
 }
 ```
 
