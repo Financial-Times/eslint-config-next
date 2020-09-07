@@ -5,9 +5,9 @@ ESLint configuration for Next projects
 
 Reference the shared configuration in your repository's own `.eslintrc.js` like so:
 
-```json
-{
-    "extends": "@financial-times/eslint-config-next"
+```js
+module.exports = {
+	extends: ['@financial-times/eslint-config-next']
 }
 ```
 
