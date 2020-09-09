@@ -1,4 +1,5 @@
-# eslint-config-next
+# eslint-config-next [![CircleCI](https://circleci.com/gh/Financial-Times/eslint-config-next.svg?style=svg&circle-token=9c352d2fac5fe7e9eb3232c48d8600eea057f6bb)](https://github.com/Financial-Times/eslint-config-next)
+
 ESLint configuration for Next projects
 
 ## Usage
@@ -12,3 +13,9 @@ module.exports = {
 ```
 
 Avoid using `.eslintrc` file format since [it has been depracated.](https://eslint.org/docs/user-guide/configuring#configuration-file-formats-1)
+
+You can find the docs for ESLint shareable configs [here](https://eslint.org/docs/developer-guide/shareable-configs).
+
+## Related
+
+This shared config is being used by [n-gage](https://github.com/Financial-Times/n-gage).
