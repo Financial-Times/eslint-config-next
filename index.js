@@ -62,8 +62,8 @@ const packageJsonContainsPackage = packageName => {
 		(dependencies && dependencies[packageName])
 		|| (devDependencies && devDependencies[packageName])
 		|| (peerDependencies && peerDependencies[packageName])
-	)
-}
+	);
+};
 
 if ((packageJsonContainsPackage('react') || packageJsonContainsPackage('preact'))) {
 	config.plugins.push('react');
@@ -75,7 +75,7 @@ if ((packageJsonContainsPackage('react') || packageJsonContainsPackage('preact')
 		'react/no-danger': 'off',
 		'react/no-render-return-value': 'off'
 	});
-	
+
 	Object.assign(config.settings, {
 		react: {
 			version: 'detect'
