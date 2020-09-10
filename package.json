@@ -16,15 +16,13 @@
     "eslint-plugin",
     "eslintplugin"
   ],
-  "peerDependencies": {
+  "dependencies": {
     "eslint": ">=5.0.0",
     "eslint-plugin-no-only-tests": ">=2.0.0"
   },
   "private": false,
   "devDependencies": {
-    "@financial-times/n-gage": "^6.0.1",
-    "eslint": "^7.8.1",
-    "eslint-plugin-no-only-tests": "^2.4.0"
+    "@financial-times/n-gage": "^6.0.1"
   },
   "husky": {
     "hooks": {
