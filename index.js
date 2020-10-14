@@ -1,3 +1,5 @@
+const path = require('path');
+
 const config = {
 	'env': {
 		'browser': true,
@@ -54,7 +56,7 @@ const config = {
 	'settings' : {}
 };
 
-const packageJson = require('./package.json');
+const packageJson = require(path.join(process.cwd(), 'package.json'));
 
 const packageJsonContainsPackage = packageName => {
 	const { dependencies, devDependencies, peerDependencies } = packageJson;
