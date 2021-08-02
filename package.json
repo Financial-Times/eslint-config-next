@@ -22,7 +22,7 @@
   },
   "private": false,
   "devDependencies": {
-    "@financial-times/n-gage": "^6.0.1"
+    "@financial-times/n-gage": "^8.3.2"
   },
   "husky": {
     "hooks": {
