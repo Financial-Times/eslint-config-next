@@ -4,7 +4,8 @@
   "description": "Shared ESLint configuration for Next projects",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npm_config_yes=true npx check-engine"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,8 @@
   },
   "private": false,
   "devDependencies": {
-    "@financial-times/n-gage": "^8.3.2"
+    "@financial-times/n-gage": "^8.3.2",
+    "check-engines": "^1.5.0"
   },
   "husky": {
     "hooks": {
@@ -30,5 +32,13 @@
       "commit-msg": "secret-squirrel-commitmsg",
       "pre-push": "make verify -j3"
     }
+  },
+  "volta": {
+    "node": "12.22.5",
+    "npm": "7.20.2"
+  },
+  "engines": {
+    "node": "12.x",
+    "npm": "7.x"
   }
 }
