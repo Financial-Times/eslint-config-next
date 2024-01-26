@@ -4,7 +4,9 @@
   "description": "Shared ESLint configuration for Next projects",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "dotcom-tool-kit test:local",
+    "build": "dotcom-tool-kit build:local",
+    "start": "dotcom-tool-kit run:local"
   },
   "repository": {
     "type": "git",
@@ -22,8 +24,8 @@
   },
   "private": false,
   "devDependencies": {
-    "@financial-times/n-gage": "^8.3.2",
-    "check-engine": "^1.10.1"
+    "dotcom-tool-kit": "^3.4.2",
+    "@dotcom-tool-kit/component": "^4.1.2"
   },
   "husky": {
     "hooks": {
