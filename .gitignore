@@ -62,5 +62,4 @@ typings/
 
 # Shared configuration managed by @financial-times/n-gage
 .editorconfig
-.eslintrc.js
-
+/.toolkitstate
