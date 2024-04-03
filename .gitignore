@@ -60,6 +60,5 @@ typings/
 # next.js build output
 .next
 
-# Shared configuration managed by @financial-times/n-gage
-.editorconfig
+# dotcom-tool-kit temporary files
 /.toolkitstate
