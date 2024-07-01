@@ -2,4 +2,5 @@ plugins:
   - "@dotcom-tool-kit/component"
 options:
   '@dotcom-tool-kit/circleci':
-    nodeVersion: 18.16-browsers
+    nodeVersion:
+      - '18.20-browsers'
